@@ -4,6 +4,7 @@ import GamesWon from './GamesWon';
 import GamesLost from './GamesLost';
 import GamesDrew from './GamesDrew';
 import GoalDifference from './GoalDifference';
+import Points from './Points';
 
 const Table = ({ fixtures}) => {
 
@@ -77,6 +78,13 @@ const Table = ({ fixtures}) => {
                         {
                             uniqueTeams.map(team => <tr key={team}>
                                 <GoalDifference team={team} fixtures={fixtures} />
+                            </tr>)
+                        }
+                    </td>
+                    <td>
+                        {
+                            uniqueTeams.map(team => <tr key={team}>
+                                <Points team={team} fixtures={fixtures} />
                             </tr>)
                         }
                     </td>
