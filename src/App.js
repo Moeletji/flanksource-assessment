@@ -1,3 +1,7 @@
+import React, { useState } from 'react';
+import { data }  from './data';
+import Table from './components/Table';
+
 import "./styles.css";
 
 // FlankSource JS code exam
@@ -55,10 +59,11 @@ import "./styles.css";
 // Please feel free to let us know if the test was overly difficult or easy or problematic in any way.
 
 export default function App() {
+
+  const [fixtures, setFixtures] = useState(data);
   return (
     <div className="App">
-      <h1>Hello Codesandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Table fixtures={fixtures} />
     </div>
   );
 }
