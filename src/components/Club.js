@@ -9,12 +9,17 @@ const Club = (props) => {
 
     const [results, setResults] = useState([]);
     const [newFixtures, setNewFixtures] = useState([]);
+    const [prettyResults, setPrettyResults] = useState([]);
+    const [prettyFixtures, setPrettyFixtures] = useState([]);
 
     useEffect(() => {
         getAllFixtures();
-        console.log(results);
-        console.log(newFixtures);
     }, []);
+
+    useEffect(() => {
+        displayResults();
+        displayFixtures();
+    }, [results, newFixtures]);
 
     const getAllFixtures = () => {
         let teamFixtures = [];
@@ -42,15 +47,56 @@ const Club = (props) => {
         setNewFixtures(teamFixtures);
     };
 
+    const displayResults = () => {
+        let resultsArray = [];
+        results.forEach(result => {
+            let teamScore = Object.entries(result.score);
+            let resultString = "";
+            let team1Info = String(teamScore[0]).split(",");
+            let team2Info = String(teamScore[1]).split(",");
+            
+            if (team == team1Info[0] && team1Info[1] !== "" || team == team2Info[0] && team2Info[1] !== "") {
+                resultString += (team1Info[0] + ' ' + team1Info[1] + ' - ' + team2Info[1] + ' ' + team2Info[0] + ' ' + result.date);   
+            }
+            console.log(resultString);
+            resultsArray.push(resultString);
+        });
 
+        setPrettyResults(resultsArray);
+    };
+
+    const displayFixtures = () => {
+        let fixtureArray = [];
+        newFixtures.forEach(fixture => {
+            let teamScore = Object.entries(fixture.score);
+            let fixtureString = "";
+            let team1Info = String(teamScore[0]).split(",");
+            let team2Info = String(teamScore[1]).split(",");
+            
+            if (team == team1Info[0] && team1Info[1] == "" || team == team2Info[0] && team2Info[1] == "") {
+                fixtureString += (team1Info[0]  + ' vs ' + team2Info[0] + ' ' + fixture.date);   
+            }
+            console.log(fixtureString);
+            fixtureArray.push(fixtureString);
+        });
+        setPrettyFixtures(fixtureArray);
+    };
 
     return (
         <div>
             <h1>{team}</h1>
             <h4>Results</h4>
-
+                <ul>
+                    {
+                        prettyResults.map(result => <li key={result}>{result}</li>)
+                    }
+                </ul>
             <h4>Fixtures</h4>
-            
+                <ul>
+                    {
+                        prettyFixtures.map(fixture => <li key={fixture}>{fixture}</li>)
+                    }
+                </ul>
             <br />
             <Link to="/">Home</Link>
         </div>
