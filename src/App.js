@@ -66,12 +66,11 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-
+        <Route exact path="/">
+          <Table fixtures={fixtures} />
+        </Route>
+        <Route exact path="/team/:teamName" component={Club} />
       </div>
-      <Route exact path="/">
-        <Table fixtures={fixtures} />
-      </Route>
-      <Route exact path="/team/:teamName" component={Club} />
     </Router>
   );
 }

@@ -24,7 +24,7 @@ const Table = ({ fixtures}) => {
     };
 
     return (
-        <div style={{marginLeft:"auto", marginRight:"auto"}}>
+        <div >
             <h1 id='title'>React Dynamic Table</h1>
             <table id='students'>
                 <thead>

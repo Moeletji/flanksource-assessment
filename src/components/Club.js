@@ -25,7 +25,9 @@ const Club = (props) => {
         let teamFixtures = [];
         let teamResults = [];
 
-        fixtures.forEach(fixture => {
+        const sortedFixtures = fixtures.sort((a,b) => new Date(a.date) - new Date(b.date));
+
+        sortedFixtures.forEach(fixture => {
             let teamScore = Object.entries(fixture.score);
             
             let team1Info = String(teamScore[0]).split(",");
