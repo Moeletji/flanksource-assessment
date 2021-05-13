@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { data }  from './data';
 import Table from './components/Table';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Club from './components/Club';
 
 import "./styles.css";
 
@@ -62,8 +64,14 @@ export default function App() {
 
   const [fixtures, setFixtures] = useState(data);
   return (
-    <div className="App">
-      <Table fixtures={fixtures} />
-    </div>
+    <Router>
+      <div className="App">
+
+      </div>
+      <Route exact path="/">
+        <Table fixtures={fixtures} />
+      </Route>
+      <Route exact path="/team/:teamName" component={Club} />
+    </Router>
   );
 }
