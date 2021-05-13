@@ -5,6 +5,7 @@ import GamesLost from './GamesLost';
 import GamesDrew from './GamesDrew';
 import GoalDifference from './GoalDifference';
 import Points from './Points';
+import { Link } from 'react-router-dom';
 
 const Table = ({ fixtures}) => {
 
@@ -42,7 +43,7 @@ const Table = ({ fixtures}) => {
                     <td>
                         {
                             uniqueTeams.map(team => <tr key={team}>
-                                {team}
+                                <Link to={`/team/${team}`} >{team}</Link>
                             </tr>)
                         }
                     </td>
