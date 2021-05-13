@@ -48,7 +48,9 @@ const Club = (props) => {
         <div>
             <h1>{team}</h1>
             <h4>Results</h4>
+
             <h4>Fixtures</h4>
+            
             <br />
             <Link to="/">Home</Link>
         </div>
