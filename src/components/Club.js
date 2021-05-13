@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { data }  from '../data';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns'
 
 const Club = (props) => {
     const [fixtures, setFixtures] = useState(data);
@@ -18,7 +19,7 @@ const Club = (props) => {
     const getAllFixtures = () => {
         let teamFixtures = [];
         let teamResults = [];
-        let games = 0;
+
         fixtures.forEach(fixture => {
             let teamScore = Object.entries(fixture.score);
             
@@ -40,6 +41,8 @@ const Club = (props) => {
         setResults(teamResults);
         setNewFixtures(teamFixtures);
     };
+
+
 
     return (
         <div>
