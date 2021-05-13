@@ -56,9 +56,8 @@ const Club = (props) => {
             let team2Info = String(teamScore[1]).split(",");
             
             if (team == team1Info[0] && team1Info[1] !== "" || team == team2Info[0] && team2Info[1] !== "") {
-                resultString += (team1Info[0] + ' ' + team1Info[1] + ' - ' + team2Info[1] + ' ' + team2Info[0] + ' ' + result.date);   
+                resultString += (team1Info[0] + ' ' + team1Info[1] + ' - ' + team2Info[1] + ' ' + team2Info[0] + ' Date: ' + format(new Date(result.date), 'dd/MM HH:mm'));   
             }
-            console.log(resultString);
             resultsArray.push(resultString);
         });
 
@@ -74,9 +73,8 @@ const Club = (props) => {
             let team2Info = String(teamScore[1]).split(",");
             
             if (team == team1Info[0] && team1Info[1] == "" || team == team2Info[0] && team2Info[1] == "") {
-                fixtureString += (team1Info[0]  + ' vs ' + team2Info[0] + ' ' + fixture.date);   
+                fixtureString += (team1Info[0]  + ' vs ' + team2Info[0] + ' Date: ' + format(new Date(fixture.date), 'dd/MM HH:mm'));   
             }
-            console.log(fixtureString);
             fixtureArray.push(fixtureString);
         });
         setPrettyFixtures(fixtureArray);
