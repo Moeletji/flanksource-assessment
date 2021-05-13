@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GamesPlayed from './GamesPlayed';
 import GamesWon from './GamesWon';
+import GamesLost from './GamesLost';
 
 const Table = ({ fixtures}) => {
 
@@ -53,6 +54,13 @@ const Table = ({ fixtures}) => {
                         {
                             uniqueTeams.map(team => <tr key={team}>
                                 <GamesWon team={team} fixtures={fixtures} />
+                            </tr>)
+                        }
+                    </td>
+                    <td>
+                        {
+                            uniqueTeams.map(team => <tr key={team}>
+                                <GamesLost team={team} fixtures={fixtures} />
                             </tr>)
                         }
                     </td>
